@@ -7,7 +7,7 @@ export default function NavBar() {
     const [ visible,setVisible ] = useState(false)
   return (
     <div className='flex justify-between items-center font-medium'>
-      <img src={assets.logo} className="w-30" alt="logo" />
+      <Link to="/"><img src={assets.logo} className="w-30" alt="logo" /></Link>
       {/* ------------------Middle section------------------- */}
       <ul className='hidden sm:flex gap-5 text-xs text-gray-600 '>
         <NavLink to="/" className="flex flex-col items-center gap-1">

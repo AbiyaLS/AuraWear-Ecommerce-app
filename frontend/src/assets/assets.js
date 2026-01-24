@@ -10,10 +10,15 @@ import g21 from "../assets/g21.png"
 import m31 from "../assets/m31.png"
 import w41 from "../assets/w41.png"
 import w31 from "../assets/w31.png"
+import b21 from "../assets/b21.jpg"
+import policy1 from "../assets/policy1.png"
+import policy2 from "../assets/policy2.png"
+import policy3 from "../assets/policy3.png"
 export const assets = {
    logo,
    banner_img,
-   b11,
+   policy1,policy2,policy3,
+   b11,b21,
    g11,g21,
    m11,m21,m31,
    w11,w21,w31,w41
@@ -78,7 +83,7 @@ export const products = [
         subCategory: "TopWear",
         size: ["s","m","l"],
         date: 12/12/2024,
-        bestSeller: true
+        bestSeller: false
     },
     {
         _id: "6",
@@ -97,12 +102,12 @@ export const products = [
         name: "dgvsdfsgddg",
         description: "yfrhgfuhsdguhushg",
         price: 100,
-        image: [w21],
+        image: [b21],
         category: "Women",
         subCategory: "TopWear",
         size: ["s","m","l"],
         date: 12/12/2024,
-        bestSeller: true
+        bestSeller: false
     },
     {
         _id: "8",
@@ -121,19 +126,19 @@ export const products = [
         name: "dgvsdfsgddg",
         description: "yfrhgfuhsdguhushg",
         price: 100,
-        image: [w21],
+        image: [m31],
         category: "Women",
         subCategory: "TopWear",
         size: ["s","m","l"],
         date: 12/12/2024,
-        bestSeller: true
+        bestSeller: false
     },
     {
         _id: "10",
         name: "dgvsdfsgddg",
         description: "yfrhgfuhsdguhushg",
         price: 100,
-        image: [w21],
+        image: [w31],
         category: "Women",
         subCategory: "TopWear",
         size: ["s","m","l"],

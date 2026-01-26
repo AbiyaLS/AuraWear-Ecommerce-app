@@ -10,6 +10,7 @@ import Cart from './pages/Cart'
 import Login from './pages/Login'
 import Product from './pages/Product'
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path='/product/:productId' element={<Product/>}/>
           <Route path='/login' element={<Login/>}/>
       </Routes>
+      <Footer/>
     </div>
   )
 }

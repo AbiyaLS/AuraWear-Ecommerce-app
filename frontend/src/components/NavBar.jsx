@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { assets } from "../assets/assets.js"
 import { Link, NavLink } from 'react-router-dom'
 import {  ChevronRight, Handbag, Menu, Search, User } from "lucide-react"
+import { ShopContext } from '../context/ShopContext.jsx'
 
 export default function NavBar() {
     const [ visible,setVisible ] = useState(false)
+    const { setShowSearch } = useContext(ShopContext)
+
+    
   return (
     <div className='flex justify-between items-center font-medium'>
       <Link to="/"><img src={assets.logo} className="w-30" alt="logo" /></Link>
@@ -29,7 +33,7 @@ export default function NavBar() {
       </ul>
       {/* ---------------------------last section----------------------------- */}
       <div className='flex gap-4 text-gray-700 cursor-pointer'>
-        <Search size={30}/>
+        <Search size={30} onClick={()=>setShowSearch(true)}/>
         <div className='group relative'>
             <User size={30}/>
             <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>

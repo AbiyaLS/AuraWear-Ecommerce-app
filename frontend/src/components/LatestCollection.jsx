@@ -10,7 +10,7 @@ export default function LatestCollection() {
     useEffect(()=>{
         setLatestProducts(products.slice(0,10))
     },[])
-    console.log(products)
+    
 
   return (
     <div className='mt-45 md:my-45 lg:my-10'>

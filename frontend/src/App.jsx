@@ -11,11 +11,13 @@ import Login from './pages/Login'
 import Product from './pages/Product'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
+import SearchBar from './components/SearchBar'
 
 export default function App() {
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7pvw] lg:px-[9pvw]'>
       <NavBar/>
+      <SearchBar/>
       <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/about' element={<About/>}/>

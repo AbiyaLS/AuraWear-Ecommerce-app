@@ -6,7 +6,7 @@ import { ShopContext } from '../context/ShopContext.jsx'
 
 export default function NavBar() {
     const [ visible,setVisible ] = useState(false)
-    const { setShowSearch } = useContext(ShopContext)
+    const { setShowSearch,getCartCount } = useContext(ShopContext)
 
     
   return (
@@ -47,7 +47,7 @@ export default function NavBar() {
         </div>
         <Link to="/cart" className='relative'>
             <Handbag size={30}/>
-            <p className='absolute right-[-5px] bottom-[-5px] text-center w-3 leading-3 bg-black text-white rounded-full aspect-square text-[8px] p-[2px]'>10</p>
+            <p className='absolute right-[-5px] bottom-[-5px] text-center w-3 leading-3 bg-black text-white rounded-full aspect-square text-[8px] p-[2px]'>{getCartCount()}</p>
         </Link>
         <div onClick={()=>setVisible(true)} className='cursor-pointer sm:hidden'>
             <Menu size={30}/>

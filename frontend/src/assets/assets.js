@@ -1,10 +1,17 @@
 import logo from "../assets/logo.png"
 import banner_img from "../assets/banner-img.jpg"
 import b11 from "../assets/b11.png"
+import b12 from "../assets/b12.png"
+import b13 from "../assets/b13.png"
 import g11 from "../assets/g11.png"
 import m11 from "../assets/m11.png"
+import m12 from "../assets/m12.png"
+import m13 from "../assets/m13.png"
 import m21 from "../assets/m21.png"
 import w11 from "../assets/w11.png"
+import w12 from "../assets/w12.png"
+import w13 from "../assets/w13.png"
+import w14 from "../assets/w14.png"
 import w21 from "../assets/w21.png"
 import g21 from "../assets/g21.png"
 import m31 from "../assets/m31.png"
@@ -16,14 +23,18 @@ import w51 from "../assets/w51.png"
 import policy1 from "../assets/policy1.png"
 import policy2 from "../assets/policy2.png"
 import policy3 from "../assets/policy3.png"
+
 export const assets = {
    logo,
    banner_img,
    policy1,policy2,policy3,
-   b11,b21,
+   b11,b12,b13,
+   b21,
    g11,g21,
-   m11,m21,m31,m41,
-   w11,w21,w31,w41,w51
+   m11,m12,m13,
+   m21,m31,m41,
+   w11,w12,w13,w14,
+   w21,w31,w41,w51
 }
 
 export const products = [
@@ -32,7 +43,7 @@ export const products = [
         name: "Mens Shirt",
         description: "Multi colour Strip shirt",
         price: 1000,
-        image: [m11],
+        image: [m11,m12,m13],
         category: "Men",
         subCategory: "Topwear",
         size: ["s","m","l"],
@@ -44,7 +55,7 @@ export const products = [
         name: "Dress",
         description: "Laced Dress",
         price: 899,
-        image: [w11],
+        image: [w11,w12,w13,w14],
         category: "Women",
         subCategory: "Dresses",
         size: ["s","m","l"],
@@ -56,7 +67,7 @@ export const products = [
         name: "Short & Shirt set",
         description: "Beautiful set for boys",
         price: 1500,
-        image: [b11],
+        image: [b11,b12,b13],
         category: "Kids",
         subCategory: "Sets",
         size: ["s","m","l"],

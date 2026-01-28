@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 import { Star } from 'lucide-react'
+import RelatedProducts from '../components/RelatedProducts'
 
 export default function Product() {
   const { productId } = useParams()
@@ -16,7 +17,7 @@ export default function Product() {
       if( item._id === productId ){
         setProductData(item)
         setImage(item.image[0])
-        console.log(item)
+      
         return null
       }
     })
@@ -79,7 +80,7 @@ export default function Product() {
          </div>
        </div> 
          {/*---------------Description and Review----------------  */}
-         <div className='mt-20'>
+         <div className='mt-20 '>
           <div className='flex'>
             <b className='border px-5 py-2 text-sm'>Description</b>
             <p className='border px-5 py-2 text-sm'>Review (122)</p>
@@ -87,12 +88,13 @@ export default function Product() {
           <div className='flex flex-col gap-4 px-6 py-6 text-sm text-gray-500 border border-gray-400'>
             <p className='text-justify'>An Ecommerce website is an online platform that facilitates the buying and selling of products or services over the internet. It services as a virtual marketplace where businesses and individuals can showcase there products, interact with customers, and contact  transaction without the need for a physical presence. E-commerce website have gained immense popularity due to their convience, accessibility and the global reach they offer.</p>
             <p className='text-justify'>E-commerce website typically display products or services along with detailed description, image, prices and any available variations (e.g.,sizes, colours). Each product usually has its own dedicated page with relevent information</p>
-
-          </div>
-
+            </div>
          </div>
+         {/* ---------------Dispaly related products------------------ */}
+         <RelatedProducts categories={productData.category} subCategories={productData.subCategory}/>
     </div>
   ) : <div className='opacity-0'>
 
   </div>
 }
+ 

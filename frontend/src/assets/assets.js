@@ -4,16 +4,22 @@ import b11 from "../assets/b11.png"
 import b12 from "../assets/b12.png"
 import b13 from "../assets/b13.png"
 import g11 from "../assets/g11.png"
+import g12 from "../assets/g12.png"
 import m11 from "../assets/m11.png"
 import m12 from "../assets/m12.png"
 import m13 from "../assets/m13.png"
 import m21 from "../assets/m21.png"
+import m22 from "../assets/m22.png"
+import m23 from "../assets/m23.png"
+import m24 from "../assets/m24.png"
 import w11 from "../assets/w11.png"
 import w12 from "../assets/w12.png"
 import w13 from "../assets/w13.png"
 import w14 from "../assets/w14.png"
 import w21 from "../assets/w21.png"
 import g21 from "../assets/g21.png"
+import g22 from "../assets/g22.png"
+import g23 from "../assets/g23.png"
 import m31 from "../assets/m31.png"
 import w41 from "../assets/w41.png"
 import w31 from "../assets/w31.png"
@@ -30,10 +36,12 @@ export const assets = {
    policy1,policy2,policy3,
    b11,b12,b13,
    b21,
-   g11,g21,
+   g11,g12,
+   g21,g22,g23,
    m11,m12,m13,
-   m21,m31,m41,
-   w11,w12,w13,w14,
+   m21,m22,m23,m24,
+   m31,m41,
+   w11,w12,w13,w14, 
    w21,w31,w41,w51
 }
 
@@ -79,7 +87,7 @@ export const products = [
         name: "Tshirt",
         description: "Plain colour Tshirt with white collar",
         price: 500,
-        image: [m21],
+        image: [m21,m22,m23,m24],
         category: "Men",
         subCategory: "Topwear",
         size: ["s","m","l"],
@@ -91,7 +99,7 @@ export const products = [
         name: "Sweater",
         description: "Beautiful light weight sweater",
         price: 700,
-        image: [g11],
+        image: [g11,g12],
         category: "Kids",
         subCategory: "Winterwear",
         size: ["s","m","l"],
@@ -127,7 +135,7 @@ export const products = [
         name: "Girl Kids Sets",
         description: "Plain Tshits with Lined Pants",
         price: 599,
-        image: [g21],
+        image: [g21,g22,g23],
         category: "Kids",
         subCategory: "Sets",
         size: ["s","m","l"],

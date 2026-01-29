@@ -49,8 +49,8 @@ export default function Product() {
         </div>
         {/* -------------Product Information--------- */}
         <div className='flex-1'>
-          <h1 className='text-lg font-semibold mb-2'>{productData.name }</h1>
-          <div className='flex items-center mb-1'>
+          <h1 className='text-2xl font-semibold mb-4'>{productData.name }</h1>
+          <div className='flex items-center mb-3'>
             <Star className='fill-orange-600 text-orange-500 ' size={20}/>
             <Star className='fill-orange-600 text-orange-500 ' size={20}/>
             <Star className='fill-orange-600 text-orange-500 ' size={20}/>
@@ -58,13 +58,13 @@ export default function Product() {
             <Star className='fill-orange-200 text-orange-200 ' size={20}/>
             <p className='ml-2 text-gray-500 text-xs'>(122)</p>
           </div>
-          <h2 className='text-lg font-medium'>{currency}{productData.price}</h2>
+          <h2 className='text-xl font-medium'>{currency}{productData.price}</h2>
           <p className='text-xs text-gray-500 my-2'>{productData.description}</p>
           <div className='flex flex-col gap-4 my-4'>
-            <p className='mt-2 text-sm'>Select size</p>
+            <p className='mt-2 text-sm font-medium'>Select size</p>
              <div className='flex gap-2'>
               {productData.size.map((item, index)=>(
-                <button onClick={()=>setSize(item)} key={index} className={`${item === size ? "border-gray-800" : "border-gray-200"} border bg-gray-200 py-1 px-4 rounded-sm text-gray-600 cursor-pointer`}>
+                <button onClick={()=>setSize(item)} key={index} className={`${item === size ? "border-gray-800" : "border-gray-200"} border bg-gray-200 py-1 px-4 rounded-sm text-gray-600 cursor-pointer `}>
                   {item}
                   </button>
               ))}
@@ -72,9 +72,9 @@ export default function Product() {
           </div>
           <button 
               onClick={()=>addToCart(productData._id , size)}
-              className='bg-gray-900 text-white px-4 text-xs py-2 mb-8 active:bg-gray-700'>ADD TO CART</button>
+              className='bg-gray-900 text-white px-4 text-md py-2 my-8 active:bg-gray-700'>ADD TO CART</button>
           <hr className='text-gray-400' />
-          <div className='text-xs text-gray-500 mt-4'>
+          <div className='text-sm text-gray-700 mt-8'>
             <p>100% Orginal Product.</p>
             <p>Cash on Delivery is available on this product</p>
             <p>Easy return and exchange policy within 7 days</p>

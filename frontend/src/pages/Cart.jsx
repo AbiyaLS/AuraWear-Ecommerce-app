@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from '../components/Title'
 import { Trash2 } from 'lucide-react'
+import CartTotal from '../components/CartTotal'
 
 export default function Cart() {
-  const { products, currency, cartItems } = useContext(ShopContext)
+  const { products, currency, cartItems, updateQuantity, navigate } = useContext(ShopContext)
   const [ cartData, setCartData ] = useState([])
 
   useEffect(()=>{
@@ -25,7 +26,7 @@ export default function Cart() {
 
   return (
     <div className='mt-10'>
-      <div className='text-xl mb-6'>
+      <div className='text-3xl mb-6'>
         <Title text1={"YOUR"} text2={"CART"} /> 
       </div>
 
@@ -70,16 +71,28 @@ export default function Cart() {
                   type="number"
                   min={1}
                   defaultValue={item.quantity}
+                  onChange={(e)=> e.target.value === "" || e.target.value === 0 ? null : updateQuantity(item._id,item.size,Number(e.target.value))}
                 />
 
                 {/* Delete icon */}
                 <div className='flex justify-center text-gray-500 hover:text-red-600 cursor-pointer'>
-                  <Trash2 size={25} />
+                  <Trash2 onClick={()=>updateQuantity(item._id,item.size,0)} size={25} />
                 </div>
               </div>
             )
           })
         }
+      </div>
+      {/* ---------------------Total Amount-------------- */}
+      <div className='flex justify-end my-15'>
+        <div className='w-full sm:w-[450px]'>
+          <CartTotal/>
+          <div className='my-8 w-full text-end'>
+            <button onClick={()=>navigate('/place-order')}
+            className='bg-black text-white py-2 px-10'>PROCEED TO CHECKOUT</button>
+          </div>
+
+        </div>
       </div>
     </div>
   )

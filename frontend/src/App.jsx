@@ -11,8 +11,8 @@ import Login from './pages/Login'
 import Product from './pages/Product'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
-import SearchBar from './components/SearchBar'
 import { ToastContainer, toast } from 'react-toastify';
+import SearchBar from './components/SearchBar'
 
 export default function App() {
   return (

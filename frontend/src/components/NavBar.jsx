@@ -35,7 +35,7 @@ export default function NavBar() {
       <div className='flex gap-4 text-gray-700 cursor-pointer'>
         <Search size={30} onClick={()=>setShowSearch(true)}/>
         <div className='group relative'>
-            <User size={30}/>
+           <Link to={"/login"}><User size={30}/></Link>
             <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
                 <div className='flex flex-col gap-2 w-30 p-2 rounded-md bg-gray-100 text-gray-500 text-sm'>
                     <p className='cursor-pointer hover:text-gray-800'>My Profile</p>

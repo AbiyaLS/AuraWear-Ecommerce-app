@@ -5,8 +5,8 @@ import Title from '../components/Title'
 export default function Orders() {
   const { currency, products } = useContext(ShopContext)
   return (
-    <div className='mt-10'>
-      <div className='text-xl'>
+    <div className='my-10'>
+      <div className='text-2xl mb-4'>
         <Title text1={"MY"} text2={"ORDERS"}/>
       </div>
       <div>

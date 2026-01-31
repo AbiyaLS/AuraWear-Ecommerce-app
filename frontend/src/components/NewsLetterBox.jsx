@@ -8,7 +8,7 @@ export default function NewsLetterBox() {
 
   return (
     <div className='text-center '>
-      <p className='font-semibold mb-2'>Subscribe now & get 20% off</p>
+      <p className='font-semibold text-xl mb-2'>Subscribe now & get 20% off</p>
       <p className='text-xs text-gray-400'>Lorem ipsum dolor, minus magnam quibusdam aliquid praesentium non.</p>
       <form onSubmit={handleSubmit}
       className='my-5 flex flex-col sm:flex-row items-stretch justify-center max-w-md mx-auto'>

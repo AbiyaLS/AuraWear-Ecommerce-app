@@ -31,11 +31,14 @@ import policy2 from "../assets/policy2.png"
 import policy3 from "../assets/policy3.png"
 import stripe from "../assets/stripe.png"
 import razorpay from "../assets/razorpay.png"
+import about from "../assets/about.jpg"
+import contact from "../assets/contact.jpg"
 
 export const assets = {
    logo,
    banner_img,
    stripe,razorpay,
+   about,contact,
    policy1,policy2,policy3,
    b11,b12,b13,
    b21,

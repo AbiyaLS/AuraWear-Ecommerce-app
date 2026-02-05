@@ -75,5 +75,19 @@ export const userRegister = async (req,res) => {
 
 // admin Login
 export const adminLogin = async (req,res) => {
+     try {
+        const { email, password } = req.body
+        if( email === process.env.ADMIN_EMAIL && password === process.env. ADMIN_PASSWORD ){
+            const token = jwt.sign( email+password, process.env.JWT_SECRET )
+            res.status(200).json( token )
+        }
+        else{
+            res.status(401).json({ message: "Invalid Credential"})
+        }
 
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({ message: "Something went wrong ", error:error.message })
+    }
+   
 } 

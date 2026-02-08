@@ -1,42 +1,106 @@
-import React from 'react'
+import React, { useState } from 'react'
 import upload from "../assets/upload.png"
+import { backendUrl } from '../App'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
-export default function Add() {
+export default function Add({ token }) {
+
+  const [ image1,setImage1] = useState(false)
+  const [ image2,setImage2] = useState(false)
+  const [ image3,setImage3] = useState(false)
+  const [ image4,setImage4] = useState(false)
+
+  const [ name,setName ] = useState("")
+  const [ description,setDescription ] = useState("")
+  const [ price,setPrice ] = useState("")
+  const [ category,setCategory ] = useState("Men")
+  const [ subCategory,setSubCategory ] = useState("Topwear")
+  const [ bestseller,setBestseller ] = useState(false)
+  const [ sizes,setSizes ] = useState([])
+
+  const onSubmitHandler = async (e) => {
+  e.preventDefault();
+
+  try {
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("category", category);
+    formData.append("subCategory", subCategory);
+    formData.append("bestseller", bestseller ? "true" : "false");
+    formData.append("sizes", JSON.stringify(sizes));
+
+    image1 && formData.append("image1", image1);
+    image2 && formData.append("image2", image2);
+    image3 && formData.append("image3", image3);
+    image4 && formData.append("image4", image4);
+
+    const response = await axios.post(`${backendUrl}api/product/add`, formData, {
+       headers: {
+      token: token
+    }}
+    );
+    console.log(response)
+    if(response.status === 200){
+      toast.success(response.data.message)
+      setName("")
+      setDescription("")
+      setPrice("")
+      setImage1(false)
+      setImage2(false)
+      setImage3(false)
+      setImage4(false)
+      setCategory("Men")
+      setSubCategory("Topwear")
+      setSizes([])
+    }else{
+      toast.error(response.data.message)
+    }
+
+  } catch (error) {
+    console.error("Add product error:", error.response?.data || error.message);
+    toast.error(error.message)
+  }
+};
+
+
   return (
-    <form className='flex flex-col w-full item-start justify-start text-sm gap-2'>
+    <form onSubmit={onSubmitHandler} className='flex flex-col w-full item-start justify-start text-sm gap-2 mb-10'>
       <div>
         <p className='mb-2'>Upload Image</p>
         <div className='flex gap-4'>
         <label htmlFor="image1" className=''>
-          <img src={upload} className='w-20' alt="" />
-          <input type="file" id="image1" hidden/>
+          <img src={!image1 ? upload : URL.createObjectURL(image1)} className='w-20' alt="" />
+          <input onChange={(e) => setImage1(e.target.files[0])} type="file" id="image1" hidden/>
         </label>
         <label htmlFor="image2" className=''>
-          <img src={upload} className='w-20' alt="" />
-          <input type="file" id="imag2" hidden/>
+          <img src={!image2 ? upload : URL.createObjectURL(image2)} className='w-20' alt="" />
+          <input onChange={(e) => setImage2(e.target.files[0])} type="file" id="image2" hidden/>
         </label>
         <label htmlFor="image3" className=''>
-          <img src={upload} className='w-20' alt="" />
-          <input type="file" id="image3" hidden/>
+          <img src={!image3 ? upload : URL.createObjectURL(image3)} className='w-20' alt="" />
+          <input onChange={(e) => setImage3(e.target.files[0])} type="file" id="image3" hidden/>
         </label>
         <label htmlFor="image4" className=''>
-          <img src={upload} className='w-20' alt="" />
-          <input type="file" id="image4" hidden/>
+          <img src={!image4 ? upload : URL.createObjectURL(image4)} className='w-20' alt="" />
+          <input onChange={(e) => setImage4(e.target.files[0])} type="file" id="image4" hidden/>
         </label>
         </div>
       </div>
       <div>
         <p className='mb-2'>Product Name</p>
-        <input type="text" placeholder='Type Here...'  className='w-full max-w-[500px] border border-gray-400 py-2 px-4 rounded-md' required/>
+        <input onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder='Type Here...'  className='w-full max-w-[500px] border border-gray-400 py-2 px-4 rounded-md' required/>
       </div>
       <div>
         <p className='mb-2'>Product Description</p>
-        <textarea name="description" required placeholder='Write Content Here...' className='w-full max-w-[500px] border border-gray-400 py-2 px-4 rounded-md'/>
+        <textarea onChange={(e) => setDescription(e.target.value)} value={description} name="description" required placeholder='Write Content Here...' className='w-full max-w-[500px] border border-gray-400 py-2 px-4 rounded-md'/>
       </div>
       <div className='flex flex-col sm:flex-row w-full sm:gap-8 gap-5'>
         <div>
           <p className='mb-1'>Product Category</p>
-          <select className='w-full max-w-[250px] border border-gray-400 py-2 px-2 rounded-md'>
+          <select onChange={(e) => setCategory(e.target.value)} className='w-full max-w-[250px] border border-gray-400 py-2 px-2 rounded-md'>
             <option value="Men">Men</option>
             <option value="Women">Women</option>
             <option value="Kids">Kids</option>
@@ -44,7 +108,7 @@ export default function Add() {
         </div>
          <div>
            <p className='mb-1'>Sub Category</p>
-          <select className='w-full max-w-[250px] border border-gray-400 py-2 px-2 rounded-md'>
+          <select onChange={(e) => setSubCategory(e.target.value)} className='w-full max-w-[250px] border border-gray-400 py-2 px-2 rounded-md'>
             <option value="Topwear">Topwear</option>
             <option value="Bottomwear">Bottomwear</option>
             <option value="Winterwear">Winterwear</option>
@@ -54,21 +118,21 @@ export default function Add() {
         </div>
          <div>
           <p className='mb-1'>Product Price</p>
-          <input type="text" placeholder='₹324' className='w-full max-w-[200px] border border-gray-400 py-2 px-4 rounded-md'/>
+          <input onChange={(e) => setPrice(e.target.value)} value={price} type="number" placeholder='₹324' className='w-full max-w-[200px] border border-gray-400 py-2 px-4 rounded-md'/>
         </div>
       </div>
       <div>
         <p className='mb-2'>Sizes</p>
         <div className='flex gap-4'>
-          <span className='border px-3 py-1 bg-gray-200 border-gray-200 text-sm font-semibold rounded-md hover:border-[#C586A5]'>S</span>
-          <span className='border px-3 py-1 bg-gray-200 border-gray-200 text-sm font-semibold rounded-md hover:border-[#C586A5]'>M</span>
-          <span className='border px-3 py-1 bg-gray-200 border-gray-200 text-sm font-semibold rounded-md hover:border-[#C586A5]'>L</span>
-          <span className='border px-3 py-1 bg-gray-200 border-gray-200 text-sm font-semibold rounded-md hover:border-[#C586A5]'>XL</span>
-          <span className='border px-3 py-1 bg-gray-200 border-gray-200 text-sm font-semibold rounded-md hover:border-[#C586A5]'>XXL</span>
+          <span onClick={() => setSizes(prev =>prev.includes("S") ? prev.filter(item => item !== "S") : [...prev,"S"])} className={`${sizes.includes("S") ? "bg-pink-200" : "bg-slate-200"} border px-3 py-1  border-gray-200 text-sm font-semibold rounded-md hover:border-[#C586A5]`}>S</span>
+          <span onClick={() => setSizes(prev =>prev.includes("M") ? prev.filter(item => item !== "M") : [...prev,"M"])} className={`${sizes.includes("M") ? "bg-pink-200" : "bg-slate-200"} border px-3 py-1  border-gray-200 text-sm font-semibold rounded-md hover:border-[#C586A5]`}>M</span>
+          <span onClick={() => setSizes(prev =>prev.includes("L") ? prev.filter(item => item !== "L") : [...prev,"L"])} className={`${sizes.includes("L") ? "bg-pink-200" : "bg-slate-200"} border px-3 py-1  border-gray-200 text-sm font-semibold rounded-md hover:border-[#C586A5]`}>L</span>
+          <span onClick={() => setSizes(prev =>prev.includes("XL") ? prev.filter(item => item !== "XL") : [...prev,"XL"])} className={`${sizes.includes("XL") ? "bg-pink-200" : "bg-slate-200"} border px-3 py-1  border-gray-200 text-sm font-semibold rounded-md hover:border-[#C586A5]`}>XL</span>
+          <span onClick={() => setSizes(prev =>prev.includes("XXL") ? prev.filter(item => item !== "XXL") : [...prev,"XXL"])} className={`${sizes.includes("XXL") ? "bg-pink-200" : "bg-slate-200"} border px-3 py-1  border-gray-200 text-sm font-semibold rounded-md hover:border-[#C586A5]`}>XXL</span>
         </div>
       </div>
       <div className='flex gap-4 mt-2'>
-        <input type="checkbox" id='bestseller' className=''/>
+        <input onChange={() => setBestseller(prev => !prev)} checked={bestseller} type="checkbox" id='bestseller' className=''/>
         <label htmlFor='bestseller'>Add to bestseller</label>
       </div>
       <button type='submit' className='bg-black text-white py-2 w-30'>Add</button>

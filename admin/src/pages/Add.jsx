@@ -71,19 +71,19 @@ export default function Add({ token }) {
       <div>
         <p className='mb-2'>Upload Image</p>
         <div className='flex gap-4'>
-        <label htmlFor="image1" className=''>
+        <label htmlFor="image1" className='cursor-pointer'>
           <img src={!image1 ? upload : URL.createObjectURL(image1)} className='w-20' alt="" />
           <input onChange={(e) => setImage1(e.target.files[0])} type="file" id="image1" hidden/>
         </label>
-        <label htmlFor="image2" className=''>
+        <label htmlFor="image2" className='cursor-pointer'>
           <img src={!image2 ? upload : URL.createObjectURL(image2)} className='w-20' alt="" />
           <input onChange={(e) => setImage2(e.target.files[0])} type="file" id="image2" hidden/>
         </label>
-        <label htmlFor="image3" className=''>
+        <label htmlFor="image3" className='cursor-pointer'>
           <img src={!image3 ? upload : URL.createObjectURL(image3)} className='w-20' alt="" />
           <input onChange={(e) => setImage3(e.target.files[0])} type="file" id="image3" hidden/>
         </label>
-        <label htmlFor="image4" className=''>
+        <label htmlFor="image4" className='cursor-pointer'>
           <img src={!image4 ? upload : URL.createObjectURL(image4)} className='w-20' alt="" />
           <input onChange={(e) => setImage4(e.target.files[0])} type="file" id="image4" hidden/>
         </label>
@@ -135,7 +135,7 @@ export default function Add({ token }) {
         <input onChange={() => setBestseller(prev => !prev)} checked={bestseller} type="checkbox" id='bestseller' className=''/>
         <label htmlFor='bestseller'>Add to bestseller</label>
       </div>
-      <button type='submit' className='bg-black text-white py-2 w-30'>Add</button>
+      <button type='submit' className='bg-black text-white py-2 w-30 cursor-pointer'>Add</button>
     </form>
   )
 }

@@ -66,7 +66,7 @@ export default function List( { token }) {
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>{currency}{item.price}</p>
-              <p onClick={() => deleteProduct(item._id)} className='text-right md:text-center cursor-pointer text-lg font-semibold'>X</p>
+              <p onClick={() => deleteProduct(item._id)} className='text-right md:text-center cursor-pointer text-lg font-medium text-red-500'>X</p>
             </div>
           ))
         }

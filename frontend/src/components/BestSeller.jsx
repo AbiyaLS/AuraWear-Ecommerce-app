@@ -5,12 +5,12 @@ import Title from './Title'
 
 export default function BestSeller() {
     const { products } = useContext(ShopContext)
-    const [BestSeller, setBestSeller ] = useState([])
+    const [bestSeller, setBestSeller ] = useState([])
 
     useEffect(() => {
-    const bestProducts = products.filter(item => item.bestSeller)
+    const bestProducts = products.filter(item => item.bestseller)
     setBestSeller(bestProducts.slice(0, 5))
-}, [])
+}, [products])
   return (
      <div className='my-10'>
            <div className='text-center mb-8 text-xl md:text-2xl lg:text-3xl'>
@@ -20,7 +20,7 @@ export default function BestSeller() {
          {/* ----------Rendering Products-------- */}
          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 gap-y-6'>
            {
-               BestSeller.map((item,index)=>(
+               bestSeller.map((item,index)=>(
                    <ProductItem
                         key={item._id}
                         id={item._id}

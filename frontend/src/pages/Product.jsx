@@ -63,7 +63,7 @@ export default function Product() {
           <div className='flex flex-col gap-4 my-4'>
             <p className='mt-2 text-sm font-medium'>Select size</p>
              <div className='flex gap-2'>
-              {productData.size.map((item, index)=>(
+              {productData.sizes.map((item, index)=>(
                 <button onClick={()=>setSize(item)} key={index} className={`${item === size ? "border-gray-800" : "border-gray-200"} border bg-gray-200 py-1 px-4 rounded-sm text-gray-600 cursor-pointer `}>
                   {item}
                   </button>

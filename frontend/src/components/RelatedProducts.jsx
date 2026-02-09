@@ -9,7 +9,7 @@ export default function RelatedProducts({ categories,subCategories }) {
 
     useEffect(()=>{
 
-        if(products.length > 0){
+        if(products.length > 0 && categories && subCategories){
             let productCopy = products.slice()
             productCopy = productCopy.filter(item => categories === item.category)
             productCopy = productCopy.filter(item => subCategories === item.subCategory)
@@ -17,7 +17,7 @@ export default function RelatedProducts({ categories,subCategories }) {
             setRelated(productCopy.slice(0,5))
         }
 
-    },[products])
+    },[products, categories,subCategories])
   return (
     <div className='mt-10'>
       <div className='text-center text-2xl mb-5'>
@@ -27,9 +27,9 @@ export default function RelatedProducts({ categories,subCategories }) {
         {
             related.map((item,index)=>(
                 <ProductItem
-                key={index}
+                key={index._id}
                 id={item._id}
-                image={item.image[0]}
+                image={item.image?.[0]}
                 name={item.name}
                 price={item.price }
                 />

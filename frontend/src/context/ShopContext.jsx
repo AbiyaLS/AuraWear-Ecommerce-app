@@ -13,6 +13,7 @@ const ShopContextProvider = (props) => {
     const [ showSearch, setShowSearch] = useState(false)
     const [ cartItems, setCartItems ] = useState({})
     const [ products, setProducts ] = useState([])
+    const [ token, setToken ] = useState("")
     const navigate = useNavigate()
 
     // ------------Product add to cart only by selecting size--------
@@ -96,6 +97,13 @@ const ShopContextProvider = (props) => {
         getProductsdata()
     },[])
 
+    useEffect(()=>{
+        if(!token && localStorage.getItem("token")){
+            setToken(localStorage.getItem("token"))
+        }
+
+    },[])
+
 
 
     const value = {
@@ -104,7 +112,8 @@ const ShopContextProvider = (props) => {
         cartItems,addToCart,
         getCartCount, updateQuantity,getCartAmount,
         navigate,
-        backendUrl
+        backendUrl,
+        token, setToken
   
     }
     return (

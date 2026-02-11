@@ -24,7 +24,7 @@ export const userLogin = async (req,res) => {
         const isMatch = await bcrypt.compare(password, user.password)
         if(isMatch){
             const token = createToken(user._id)
-            res.status(200).json({ token })
+            res.status(200).json({ token,message: "User Login Successfully" })
         }
         else{
             return res.status(400).json({ message: "Invalid Credential" })
@@ -65,7 +65,7 @@ export const userRegister = async (req,res) => {
         const user = await newUser.save()
 
         const token = createToken(user._id)
-        res.status(200).json({ token })
+        res.status(200).json({ token, message: "User Register Successfully" })
     } catch (error) {
         console.log(error)
         res.status(400).json({ message: "Something went wrong ", error:error.message })

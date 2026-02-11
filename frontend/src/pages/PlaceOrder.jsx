@@ -7,6 +7,23 @@ import { ShopContext } from '../context/ShopContext'
 export default function PlaceOrder() {
   const { navigate } = useContext(ShopContext)
   const [ payMethod, setPayMethod ] = useState("cod")
+  const [ formData, setFormData ] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    street: '',
+    city: '',
+    state: '',
+    zipcode: '',
+    country: '',
+    phone: ''
+  })
+
+  const onChangeHandler = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+
+  }
 
   const inputField = 'border border-gray-400 py-1.5 px-3 w-full'
   return (

@@ -6,7 +6,14 @@ import { ShopContext } from '../context/ShopContext.jsx'
 
 export default function NavBar() {
     const [ visible,setVisible ] = useState(false)
-    const { setShowSearch,getCartCount } = useContext(ShopContext)
+    const { setShowSearch,getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext)
+
+    const logout = () => {
+        navigate("/login")
+        localStorage.removeItem("token")
+        setToken("")
+        setCartItems({})
+    }
 
     
   return (
@@ -35,15 +42,17 @@ export default function NavBar() {
       <div className='flex gap-4 text-gray-700 cursor-pointer'>
         <Search size={30} onClick={()=>setShowSearch(true)}/>
         <div className='group relative'>
-           <Link to={"/login"}><User size={30}/></Link>
-            <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
+           <User onClick={() => token ? null : navigate("/login")} size={30}/>
+            {/* --------DropDown------------------- */}
+            {
+                token && <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
                 <div className='flex flex-col gap-2 w-30 p-2 rounded-md bg-gray-100 text-gray-500 text-sm'>
                     <p className='cursor-pointer hover:text-gray-800'>My Profile</p>
-                    <p className='cursor-pointer hover:text-gray-800'>Orders</p>
-                    <p className='cursor-pointer hover:text-gray-800'>Logout</p>
-                </div>
-
+                    <p onClick={() => navigate("/orders")} className='cursor-pointer hover:text-gray-800'>Orders</p>
+                    <p onClick={logout} className='cursor-pointer hover:text-gray-800'>Logout</p>
+                </div> 
             </div>
+            }
         </div>
         <Link to="/cart" className='relative'>
             <Handbag size={30}/>

@@ -1,5 +1,5 @@
 import orderModel from "../models/orderModel.js";
-import userModel from "../models/userModel";
+import userModel from "../models/userModel.js";
 
 // place order with cod 
 export const placeOrder = async (req,res) => {
@@ -51,12 +51,15 @@ export const allOrdersAdmin = async (req,res) => {
         
     }
 }
-// place order for user
+// place order for user in frontend
 export const allOrderUser = async (req,res) => {
     try {
-        
+        const userId = req.userId;  
+        const orders = await orderModel.find({ userId })
+        res.status(200).json({ orders })
     } catch (error) {
-        
+        console.log(error)
+        res.status(400).json(error.message)  
     }
 }
 // update order status from admin panel

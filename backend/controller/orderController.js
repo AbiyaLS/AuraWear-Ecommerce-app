@@ -46,9 +46,12 @@ export const placeOrderRazorPay = async (req,res) => {
 // place order for admin 
 export const allOrdersAdmin = async (req,res) => {
     try {
+        const orders = await orderModel.find({})
+        res.status(200).json({ orders })
         
     } catch (error) {
-        
+        console.log(error)
+        res.status(400).json(error.message) 
     }
 }
 // place order for user in frontend

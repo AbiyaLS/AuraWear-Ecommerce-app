@@ -68,9 +68,12 @@ export const allOrderUser = async (req,res) => {
 // update order status from admin panel
 export const updateStatus = async (req,res) => {
     try {
-        
+        const { orderId, status } = req.body
+        await orderModel.findByIdAndUpdate(orderId, { status })
+        res.status(200).json({ message: "Status Updated" })
     } catch (error) {
-        
+        console.log(error)
+        res.status(400).json(error.message) 
     }
 }
 

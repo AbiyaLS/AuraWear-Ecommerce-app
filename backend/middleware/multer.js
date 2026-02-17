@@ -1,12 +1,11 @@
-import multer from "multer"
+// middleware/multer.js
+import multer from "multer";
 
-// this middleware is use to upload image of producr in file as a form data
-const storage = multer.diskStorage({
-    filename: function( req, file, callback ){
-        callback( null, file.originalname )
-    }
-})
+const storage = multer.memoryStorage();
 
-const upload = multer({ storage })
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB per image
+});
 
-export default upload 
+export default upload;

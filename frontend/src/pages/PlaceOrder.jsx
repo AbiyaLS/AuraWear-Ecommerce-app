@@ -217,13 +217,11 @@ export default function PlaceOrder() {
                   alt="stripe icon"
                 />
               </div>
-              <div
+              {/* <div
                 onClick={() => setPayMethod("razorpay")}
-                className="flex items-center cursor-pointer border py-1.5 px-4 border-gray-500"
-              >
+                className="flex items-center cursor-pointer border py-1.5 px-4 border-gray-500">
                 <p
-                  className={`min-w-3.5 h-3.5 rounded-full border hover:border-green-400 ${payMethod === "razorpay" ? "bg-green-400" : ""}`}
-                >
+                  className={`min-w-3.5 h-3.5 rounded-full border hover:border-green-400 ${payMethod === "razorpay" ? "bg-green-400" : ""}`}>
                   {" "}
                 </p>
                 <img
@@ -231,7 +229,7 @@ export default function PlaceOrder() {
                   src={assets.razorpay}
                   alt="razorpay icon"
                 />
-              </div>
+              </div> */}
               <div
                 onClick={() => setPayMethod("cod")}
                 className="flex items-center cursor-pointer border py-1.5 px-4 border-gray-500"

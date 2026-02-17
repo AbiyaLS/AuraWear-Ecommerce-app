@@ -107,15 +107,6 @@ export const verifyStripe = async (req,res) => {
          console.log(error)
         res.status(400).json(error.message) 
     }
-
-}
-// place order with RazorPay 
-export const placeOrderRazorPay = async (req,res) => {
-    try {
-        
-    } catch (error) {
-        
-    }
 }
 // place order for admin 
 export const allOrdersAdmin = async (req,res) => {

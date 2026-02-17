@@ -22,7 +22,7 @@ export default function Orders({ token }) {
       );
       console.log(response.data);
       if (response.status === 200) {
-        setOrders(response.data.orders);
+        setOrders(response.data.orders.reverse());
       } else {
         toast.error(response.data.message);
       }

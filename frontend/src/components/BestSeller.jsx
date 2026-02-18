@@ -7,10 +7,11 @@ export default function BestSeller() {
     const { products } = useContext(ShopContext)
     const [bestSeller, setBestSeller ] = useState([])
 
-    useEffect(() => {
-    const bestProducts = products.filter(item => item.bestseller)
-    setBestSeller(bestProducts.slice(0, 5))
-}, [products])
+  useEffect(() => {
+  const bestProducts = products.filter(item => item.bestseller);
+  const lastFive = bestProducts.slice(-5).reverse();
+  setBestSeller(lastFive);
+  }, [products]);
   return (
      <div className='my-10'>
            <div className='text-center mb-8 text-xl md:text-2xl lg:text-3xl'>

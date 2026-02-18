@@ -7,9 +7,10 @@ export default function LatestCollection() {
     const { products }  = useContext(ShopContext)
     const [ latestProducts, setLatestProducts] = useState([])
 
-    useEffect(()=>{
-        setLatestProducts(products.slice(0,10))
-    },[products])
+  useEffect(() => {
+  const lastTen = products.slice(-10);
+  setLatestProducts(lastTen.reverse());
+  }, [products]);
     
 
   return (

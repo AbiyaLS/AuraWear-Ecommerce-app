@@ -1,5 +1,5 @@
 import express from "express"
-import { allOrdersAdmin, allOrderUser, placeOrder, placeOrderStripe, updateStatus, verifyStripe } from "../controller/orderController.js"
+import { allOrdersAdmin, allOrderUser, deleteOrder, placeOrder, placeOrderStripe, updateStatus, verifyStripe } from "../controller/orderController.js"
 import adminAuth from "../middleware/auth/adminAuth.js"
 import userAuth from "../middleware/auth/userAuth.js"
 
@@ -21,6 +21,7 @@ router.post("/userorders",userAuth,allOrderUser)
 // Verify Stripe
 router.post("/verifyStripe",userAuth,verifyStripe)
 
+router.post('/delete',adminAuth,deleteOrder)
 
 
 export default router

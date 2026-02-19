@@ -12,7 +12,11 @@ export default function Orders() {
       if(!token){
         return null
       }
-      const response = await axios.post(`${backendUrl}api/order/userorders`,{}, {headers:{token}})
+      const response = await axios.post(`${backendUrl}api/order/userorders`,{}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       // console.log(response.data)
       if(response.status === 200){
         let allOrdersItems =[]

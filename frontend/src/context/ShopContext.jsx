@@ -41,7 +41,11 @@ const ShopContextProvider = (props) => {
         await axios.post(
           `${backendUrl}api/cart/add`,
           { itemId, size },
-          { headers: { token } }
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
         );
       } catch (error) {
         console.log(error);
@@ -73,7 +77,11 @@ const ShopContextProvider = (props) => {
         await axios.put(
           `${backendUrl}api/cart/update`,
           { itemId, size, quantity },
-          { headers: { token } }
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
         );
       } catch (error) {
         console.log(error);
@@ -87,9 +95,7 @@ const ShopContextProvider = (props) => {
     let totalAmount = 0;
 
     for (const itemId in cartItems) {
-      const itemInfo = products.find(
-        (product) => product._id === itemId
-      );
+      const itemInfo = products.find((product) => product._id === itemId);
 
       if (!itemInfo) continue;
 
@@ -121,7 +127,9 @@ const ShopContextProvider = (props) => {
   const getUserCart = async (token) => {
     try {
       const response = await axios.get(`${backendUrl}api/cart/get`, {
-        headers: { token },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       if (response.status === 200) {
         setCartItems(response.data.cartData || {});
@@ -150,9 +158,15 @@ const ShopContextProvider = (props) => {
   }, [token]);
 
   const value = {
-    products,currency,delivery_fee,search,
-    setSearch,showSearch,setShowSearch,
-    cartItems, setCartItems,
+    products,
+    currency,
+    delivery_fee,
+    search,
+    setSearch,
+    showSearch,
+    setShowSearch,
+    cartItems,
+    setCartItems,
     addToCart,
     getCartCount,
     updateQuantity,
@@ -164,9 +178,7 @@ const ShopContextProvider = (props) => {
   };
 
   return (
-    <ShopContext.Provider value={value}>
-      {props.children}
-    </ShopContext.Provider>
+    <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>
   );
 };
 

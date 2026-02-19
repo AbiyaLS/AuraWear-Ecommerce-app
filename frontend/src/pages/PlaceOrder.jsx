@@ -68,7 +68,11 @@ export default function PlaceOrder() {
           const response = await axios.post(
             `${backendUrl}api/order/place`,
             orderData,
-            { headers: { token } },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
           );
           if (response.status === 200) {
             setCartItems({});
@@ -78,12 +82,20 @@ export default function PlaceOrder() {
           }
           break;
         case "stripe":
-          const responseStripe = await axios.post(`${backendUrl}api/order/stripe`, orderData, { headers: {token}})
-          if(responseStripe.status === 200){
-            const { session_url } = responseStripe.data
-            window.location.replace(session_url)
+          const responseStripe = await axios.post(
+            `${backendUrl}api/order/stripe`,
+            orderData,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          );
+          if (responseStripe.status === 200) {
+            const { session_url } = responseStripe.data;
+            window.location.replace(session_url);
           } else {
-            toast.error(responseStripe.data.message)
+            toast.error(responseStripe.data.message);
           }
           break;
         default:

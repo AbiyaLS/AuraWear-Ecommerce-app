@@ -16,7 +16,18 @@ connectCloudinary()
 
 // Middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: [
+    "http://localhost:5173",   // user frontend (dev)
+    "http://localhost:5174",   // admin panel (dev)
+    "https://aurawear-frontend.vercel.app",  // user frontend (prod)
+    "https://aura-wear-ecommerce-app.vercel.app"      // admin panel (prod) - if separate
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
+
 
 app.use('/api/user',userRouter)
 app.use('/api/product',productRouter)

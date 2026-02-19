@@ -15,6 +15,7 @@ const onSubmitHandler = async (e) => {
       console.log(response)
       if(response.data.success){
         setToken(response.data.token)
+        localStorage.setItem("adminToken", response.data.token);
       } else{
         toast.error(response.data.message)
       }

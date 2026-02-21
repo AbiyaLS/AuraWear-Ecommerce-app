@@ -24,23 +24,25 @@ export default function List( { token }) {
   }
 // ----------------------delete product--------------------
   const deleteProduct = async (id) => {
-    try {
-      const response = await axios.delete(`${backendUrl}api/product/remove`, {
-        data: {id},
-        headers : { token }
-      })
-      console.log(response)
-      if(response.status === 200){
-        toast.success(response.data.message)
-        await fetchListProducts()
-      }else{
-        toast.error(response.data.message)
-      }
-    } catch (error) {
-      console.log(error)
-      toast.error(error.message)
+  try {
+    const response = await axios.delete(`${backendUrl}api/product/remove`, {
+      data: { id },
+      headers: {
+        Authorization: `Bearer ${token}`,   // ✅ FIXED
+      },
+    });
+
+    if (response.status === 200) {
+      toast.success(response.data.message);
+      fetchListProducts();
+    } else {
+      toast.error(response.data.message);
     }
-   }
+  } catch (error) {
+    console.log(error);
+    toast.error(error?.response?.data?.message || "Failed to delete product");
+  }
+};
   
 
   useEffect(()=>{

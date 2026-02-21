@@ -52,5 +52,4 @@ An admin panel is included to manage products, users, and orders.
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+https://github.com/AbiyaLS/AuraWear-Ecommerce-app.git

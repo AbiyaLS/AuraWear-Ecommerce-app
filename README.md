@@ -5,7 +5,7 @@ The platform allows users to browse fashion products, add items to cart, place o
 An admin panel is included to manage products, users, and orders.
 
 🔗 Live Demo: https://aurawear-frontend.vercel.app/  
-📦 GitHub Repo: https://github.com/your-username/your-repo-name
+📦 GitHub Repo: https://github.com/AbiyaLS/AuraWear-Ecommerce-app
 
 ---
 
